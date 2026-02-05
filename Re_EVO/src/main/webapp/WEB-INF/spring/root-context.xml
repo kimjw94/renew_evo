@@ -56,5 +56,8 @@
 	<!-- Mapper Interface auto scan -->
 	<mybatis-spring:scan
 		base-package="com.jw.evo.mapper" />
+		
+			<!-- Spring Security -->
+	<import resource="classpath:/spring-security.xml" />
 
 </beans>
