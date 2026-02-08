@@ -3,6 +3,10 @@ html, body {
 	margin: 0;
 }
 
+body a {
+	text-decoration: none;
+}
+
 :root {
 	--max-width: 1440px;
 	--min-width: 744px;
@@ -28,27 +32,15 @@ html, body {
 	border-bottom: 1px solid #e5e5e5;
 	display: flex;
 	background-color: var(--layout-bg-contents-color);
-	z-index: 200;
-	transform: translateZ(0);
-	will-change: transform;
-}
-
-.loginPage-header-bar {
-	display: flex;
-	align-items: center;
 	height: 52px;
+	align-items: center;
 	padding: 12px 16px;
 	box-sizing: border-box;
 }
 
 .loginPage-title {
-	flex: 0 1 auto;
-	display: block;
-	overflow: hidden;
-	font-size: 12px;
-	font-weight: 500;
-	white-space: nowrap;
-	text-overflow: ellipsis;
+	font-size: 17px;
+	font-weight: bold;
 }
 
 .login-content-box {
@@ -80,7 +72,8 @@ html, body {
 }
 
 .login-form {
-	margin-top: 20px; justify-content : center;
+	margin-top: 20px;
+	justify-content: center;
 	align-items: center;
 	justify-content: center;
 }
@@ -109,4 +102,44 @@ html, body {
 	color: white;
 	background-color: black;
 	border-radius: 6px;
+}
+
+.login-forward-signup {
+	display: flex;
+	justify-content: center;
+	margin-top: 25px;
+}
+
+.signup_btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 2px solid black;
+	border-radius: 6px;
+	color: black;
+	font-size: 16px;
+	font-weight: bold;
+	height: 40px;
+	margin: 20px 25px;
+	width: 550px;
+}
+
+.login-forward-find {
+	display: flex;
+	justify-content: center;
+}
+
+.login-forward-find a {
+	color: gray;
+	margin: 0 10px;
+}
+
+.loginPage-footer {
+	margin-top: auto;
+	display: flex;
+	justify-content: center;
+}
+
+.non-user-order-btn {
+	color: gray;
 }
