@@ -1,0 +1,22 @@
+package com.jw.evo.vo.security;
+
+import java.util.Date;
+import java.util.List;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+
+public class UserSecurityVO {
+	private Long userNo;
+	private String userLoginId;
+	private String userPassword;
+	private String userEnabled;
+	private Date userLastLoginAt;
+	
+	private List<String> roleList;
+}

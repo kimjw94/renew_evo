@@ -1,0 +1,193 @@
+@charset "UTF-8";
+
+html, body {
+	height: 100%;
+	margin: 0;
+}
+
+body a {
+	text-decoration: none;
+}
+
+:root {
+	--max-width: 1440px;
+	--min-width: 744px;
+	--layout-bg-color: #fafafa;
+	--layout-bg-contents-color: #f5f5f5;
+}
+
+.signup {
+	width: 100%;
+	min-height: 100%;
+	max-width: var(--max-width);
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	background-color: var(--layout-bg-color);
+}
+
+.signup__header {
+	width: 600px;
+	margin: 0 auto;
+	height: 52px;
+	display: flex;
+	align-items: center;
+	padding: 12px 16px;
+	box-sizing: border-box;
+	background-color: var(--layout-bg-contents-color);
+	border-bottom: 1px solid #e5e5e5;
+}
+
+.signup__title {
+	font-size: 17px;
+	font-weight: bold;
+}
+
+.signup__contents {
+	width: 600px;
+	min-width: 600px;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+	background-color: white;
+}
+
+.signup__logoBox {
+	display: flex;
+	justify-content: center; /* 가로 가운데 */
+	align-items: center;
+	margin-top: 50px;
+	flex-direction: column;
+}
+
+.signup__logo {
+	font-family: 'musinsaBold';
+	font-size: 50px;
+}
+
+.signup__phrase {
+	font-family: 'musinsaMedium';
+	font-size: 25px;
+}
+
+.signup__form {
+	margin: 20px auto;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.signup__field {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 0 16px;
+}
+
+.signup__label {
+	width: 110px;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.signup__input {
+	height: 40px;
+	padding: 0 8px;
+	box-sizing: border-box;
+	border-radius: 6px;
+	width: 250px;
+}
+
+.signup__select {
+	height: 40px;
+	width: 250px;
+}
+
+.signup__button {
+	margin-left: 15px;
+	height: 40px;
+	padding: 0 12px;
+	cursor: pointer;
+	width: 150px;
+	border-radius: 6px;
+	font-size: 16px;
+	background-color: black;
+	color: white;
+	font-weight: bold;
+}
+
+.signup__field--email input{
+	height: 40px;
+	padding: 0 8px;
+	box-sizing: border-box;
+	border-radius: 6px;
+	width: 200px;
+}
+.signup__field--email select{
+	height: 40px;
+	padding: 0 8px;
+	box-sizing: border-box;
+	border-radius: 6px;
+	width: 200px;
+	font-size:20px;
+}
+
+.signup__field--phone input{
+	display: flex;
+	align-items: center;
+	padding: 0 16px;
+	gap: 8px;
+	width: 135px;
+}
+
+.signup__field--address {
+    align-items: flex-start;
+}
+
+.signup__addressWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 435px; /* 고정 너비 설정 */
+}
+
+.signup__addressRow {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    width: 100%;
+}
+
+.signup__input--zipcode {
+    width: 200px;
+}
+
+.signup__input--fullwidth {
+    width: 100%;
+}
+
+.signup__input--detail {
+    flex: 8;
+    min-width: 0; /* flex 아이템이 축소될 수 있도록 */
+}
+
+.signup__input--type {
+    flex: 2;
+    min-width: 0; /* flex 아이템이 축소될 수 있도록 */
+}
+.signup__submit_button{
+	align-items: center;
+	justify-content: center;
+	border: 2px solid black;
+	border-radius: 6px;
+	color: white;
+	background-color:black;
+	font-size: 16px;
+	font-weight: bold;
+	height: 50px;
+	margin: 20px 25px;
+	width: 550px;
+	
+}
