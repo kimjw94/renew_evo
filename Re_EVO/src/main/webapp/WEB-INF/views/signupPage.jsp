@@ -61,8 +61,8 @@
 				<!-- 이메일 -->
 				<div class="signup__field signup__field--email">
 					<label class="signup__label">이메일</label> <input
-						class="signup__input" type="text" name="emailId"> <span>@</span>
-					<select class="signup__select" name="emailDomain">
+						class="signup__input" type="text" name="userEmailId"> <span>@</span>
+					<select class="signup__select" name="userEmailDomain">
 						<option value="">직접 입력</option>
 						<option value="naver.com">naver.com</option>
 						<option value="gmail.com">gmail.com</option>
@@ -72,8 +72,8 @@
 				<!-- 성별 -->
 				<div class="signup__field signup__field--gender">
 					<label class="signup__label">성별</label> <label><input
-						type="radio" name="gender" value="M"> 남성</label> <label><input
-						type="radio" name="gender" value="F"> 여성</label>
+						type="radio" name="userGender" value="M"> 남성</label> <label><input
+						type="radio" name="userGender" value="F"> 여성</label>
 				</div>
 
 				<!-- 닉네임 -->
@@ -88,11 +88,11 @@
 				<div class="signup__field signup__field--phone">
 					<label class="signup__label">전화번호</label> <input
 						class="signup__input signup__input--phone" type="text"
-						name="userPhone1"> - <input
+						name="userPhoneFirst"> - <input
 						class="signup__input signup__input--phone" type="text"
-						name="userPhone2"> - <input
+						name="userPhoneMiddle"> - <input
 						class="signup__input signup__input--phone" type="text"
-						name="userPhone3">
+						name="userPhoneLast">
 				</div>
 
 
@@ -103,7 +103,7 @@
 					<div class="signup__addressWrapper">
 						<!-- 첫 줄: 우편번호 + 버튼 -->
 						<div class="signup__addressRow">
-							<input type="text" id="zipcode" name="zipcode" placeholder="우편번호"
+							<input type="text" id="zipcode" name="userZipcode" placeholder="우편번호"
 								class="signup__input signup__input--zipcode">
 							<button type="button" onclick="findAddress_kakao()"
 								class="signup__button">주소 찾기</button>
@@ -111,16 +111,14 @@
 
 						<!-- 둘째 줄: 메인 주소 -->
 						<div class="signup__addressRow">
-							<input type="text" id="address" name="address" placeholder="주소"
+							<input type="text" id="address" name="userAddress" placeholder="주소"
 								class="signup__input signup__input--fullwidth">
 						</div>
 
 						<!-- 셋째 줄: 상세주소 + 타입 (8:2 비율) -->
 						<div class="signup__addressRow">
-							<input type="text" id="address_detail" name="addressDetail"
+							<input type="text" id="address_detail" name="userAddressDetail"
 								placeholder="상세주소" class="signup__input signup__input--detail">
-							<input type="text" id="address_type" name="addressType"
-								placeholder="자택" class="signup__input signup__input--type">
 						</div>
 					</div>
 				</div>

@@ -173,10 +173,6 @@ body a {
     min-width: 0; /* flex 아이템이 축소될 수 있도록 */
 }
 
-.signup__input--type {
-    flex: 2;
-    min-width: 0; /* flex 아이템이 축소될 수 있도록 */
-}
 .signup__submit_button{
 	align-items: center;
 	justify-content: center;

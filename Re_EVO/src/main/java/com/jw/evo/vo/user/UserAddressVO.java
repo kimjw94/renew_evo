@@ -1,5 +1,7 @@
 package com.jw.evo.vo.user;
 
+import com.jw.evo.enums.AddressType;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,8 +11,9 @@ import lombok.Setter;
 @NoArgsConstructor
 public class UserAddressVO {
 	private Long addrNo;
-	private Long userNO;
-	private String addrType;
+	private Long userNo;
+	private String addrZipcode;
+	private AddressType addrType;
 	private String addrBase;
 	private String addrDetail;
 	private String addrDefault;
