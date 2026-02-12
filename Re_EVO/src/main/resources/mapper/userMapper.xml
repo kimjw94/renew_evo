@@ -1,13 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.jw.evo.mapper.userMapper">
+<mapper namespace="com.jw.evo.mapper.UserMapper">
+
 	<select id="getNextUserNo" resultType="Long">
-		SELECT EVO_USER_SEQ.NEXTVAL from DUAL
+		SELECT
+		EVO_USER_SEQ.NEXTVAL from DUAL
 	</select>
 
 	<select id="findRoleNoByRoleName" resultType="long">
 		SELECT ROLE_NO
-		FROM EVO_ROLE
+		FROM
+		EVO_ROLE
 		WHERE ROLE_NAME = #{roleName}
 	</select>
+
+	<insert id="insertUserAccount"
+		parameterType="com.jw.evo.vo.user.UserAccountVO">
+		INSERT INTO
+		EVO_USER_ACCOUNT(USER_NO,USER_LOGIN_ID,USER_PASSWORD)
+		VALUES(#{userNo},#{userLoginId},#{userPassword})
+	</insert>
+
+	<insert id="insertUserProfile"
+		parameterType="com.jw.evo.vo.user.UserProfileVO">
+		INSERT INTO
+		EVO_USER_PROFILE(USER_NO,USER_NAME,USER_BIRTHDAY,USER_EMAIL,
+			USER_GENDER,USER_NICKNAME,USER_PHONE)
+		VALUES(#{userNo},#{userName},#{userBirthday},#{userEmail},
+			#{userGender},#{userNickname},#{userPhone})
+	</insert>
+
+	<insert id="insertUserAddress"
+		parameterType="com.jw.evo.vo.user.UserAddressVO">
+		INSERT INTO
+		EVO_USER_ADDRESS(ADDR_NO,USER_NO,ADDR_TYPE,ADDR_ZIPCODE,
+			ADDR_BASE,ADDR_DETAIL,ADDR_DEFAULT)
+		VALUES(EVO_USER_ADDRESS_SEQ.NEXTVAL,#{userNo},#{addrType},
+			#{addrZipcode},#{addrBase},#{addrDetail},#{addrDefault})
+	</insert>
+	
+	<insert id="insertUserRole" parameterType="com.jw.evo.vo.user.UserRoleVO">
+		INSERT INTO
+		EVO_USER_ROLE (USER_ROLE_NO,USER_NO,ROLE_NO)
+		VALUES (EVO_USER_ROLE_SEQ.NEXTVAL,#{userNo},#{roleNo})
+	</insert>
+
+
 </mapper>

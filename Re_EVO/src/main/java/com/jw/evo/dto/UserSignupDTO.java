@@ -13,6 +13,7 @@ public class UserSignupDTO {
 	private String userPassword;
 	
 	private String userName;
+	private String userBirthday;
 	
 	private String userEmailId;
 	private String userEmailDomain;

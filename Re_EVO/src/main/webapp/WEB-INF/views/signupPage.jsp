@@ -27,7 +27,7 @@
 			</div>
 
 
-			<form class="signup__form" action="/signupProc" method="post">
+			<form class="signup__form" action="<c:url value='/signupProc'/>"  method="post">
 				<input type="hidden" name="${_csrf.parameterName}"
 					value="${_csrf.token}" />
 
@@ -56,6 +56,11 @@
 				<div class="signup__field">
 					<label class="signup__label" for="userName">이름</label> <input
 						class="signup__input" type="text" id="userName" name="userName">
+				</div>
+				
+				<div class="signup__field">
+					<label class="signup__label" for="userBirthday">생년월일</label> <input type="date"
+						class="signup__input" id="userBirthday" name="userBirthday">
 				</div>
 
 				<!-- 이메일 -->

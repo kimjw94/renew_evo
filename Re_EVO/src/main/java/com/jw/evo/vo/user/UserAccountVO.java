@@ -13,5 +13,6 @@ public class UserAccountVO{
 	private String userPassword;
 	private String userEnabled;
 	private Date userLastLoginAt;
+	private Date userCreatedAt;
 
 }

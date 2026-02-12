@@ -1,5 +1,8 @@
 package com.jw.evo.service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,14 +37,28 @@ public class UserService {
 		userAccount.setUserNo(userNo);
 		userAccount.setUserLoginId(userSignupDTO.getUserLoginId());
 		userAccount.setUserPassword(encodedPw);
-		userAccount.setUserEnabled("Y");
-
+	
 		userDAO.insertUserAccount(userAccount);
 
 		// UserProfileVO에 넣기
 		UserProfileVO userProfile = new UserProfileVO();
 		userProfile.setUserNo(userNo);
 		userProfile.setUserName(userSignupDTO.getUserName());
+		
+		String userBirthdayStr = userSignupDTO.getUserBirthday();
+		if(userBirthdayStr != null && !userBirthdayStr.isEmpty()) {
+			try {
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+				
+				Date userBirthdayDate = sdf.parse(userBirthdayStr);
+				
+				userProfile.setUserBirthday(userBirthdayDate);
+								
+			} catch (Exception e) {
+				e.printStackTrace();
+				// TODO: handle exception
+			}
+		}
 
 		String Email = userSignupDTO.getUserEmailId() + "@" + userSignupDTO.getUserEmailDomain();
 		userProfile.setUserEmail(Email);
@@ -59,8 +76,8 @@ public class UserService {
 		// UserAddressVO에 넣기
 		UserAddressVO userAddress = new UserAddressVO();
 		userAddress.setUserNo(userNo);
-		userAddress.setAddrZipcode(userSignupDTO.getUserZipcode());
 		userAddress.setAddrType(AddressType.HOME);
+		userAddress.setAddrZipcode(userSignupDTO.getUserZipcode());
 		userAddress.setAddrBase(userSignupDTO.getUserAddress());
 		userAddress.setAddrDetail(userSignupDTO.getUserAddressDetail());
 		userAddress.setAddrDefault("Y");
@@ -77,5 +94,6 @@ public class UserService {
 		userDAO.insertUserRole(userRole);
 
 	}
+
 
 }

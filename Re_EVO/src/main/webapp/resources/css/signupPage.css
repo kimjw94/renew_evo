@@ -93,7 +93,7 @@ body a {
 }
 
 .signup__input {
-	height: 40px;
+	height: 30px;
 	padding: 0 8px;
 	box-sizing: border-box;
 	border-radius: 6px;
@@ -101,13 +101,13 @@ body a {
 }
 
 .signup__select {
-	height: 40px;
+	height: 30px;
 	width: 250px;
 }
 
 .signup__button {
 	margin-left: 15px;
-	height: 40px;
+	height: 30px;
 	padding: 0 12px;
 	cursor: pointer;
 	width: 150px;
@@ -119,19 +119,20 @@ body a {
 }
 
 .signup__field--email input{
-	height: 40px;
+	height: 30px;
 	padding: 0 8px;
 	box-sizing: border-box;
 	border-radius: 6px;
 	width: 200px;
 }
 .signup__field--email select{
-	height: 40px;
+	height: 30px;
 	padding: 0 8px;
 	box-sizing: border-box;
 	border-radius: 6px;
 	width: 200px;
-	font-size:20px;
+	font-size:15px;
+	font-weight:bold;
 }
 
 .signup__field--phone input{
@@ -139,7 +140,7 @@ body a {
 	align-items: center;
 	padding: 0 16px;
 	gap: 8px;
-	width: 135px;
+	width: 130px;
 }
 
 .signup__field--address {
