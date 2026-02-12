@@ -23,7 +23,7 @@
 			</div>
 
 			<div class="login-form">
-				<form action="/loginProc" method="post">
+				<form action="<c:url value='/loginProc'/>"  method="post">
 					<input type="hidden" name="${_csrf.parameterName}"
 						value="${_csrf.token}" /> <input type="text" name="username"
 						placeholder="아이디"> <input type="password" name="password"

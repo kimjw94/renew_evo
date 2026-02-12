@@ -5,14 +5,26 @@ import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.jw.evo.vo.security.UserSecurityVO;
+
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 public class CustomUserDetails implements UserDetails {
 
 	private static final long serialVersionUID = 1L;
 	
+	private final UserSecurityVO user;
+	
+	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		// TODO Auto-generated method stub
+		
+		
+		
+		
 		return null;
+		
 	}
 
 	@Override

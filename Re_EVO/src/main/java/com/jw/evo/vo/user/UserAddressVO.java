@@ -12,11 +12,10 @@ import lombok.Setter;
 public class UserAddressVO {
 	private Long addrNo;
 	private Long userNo;
-	private String addrZipcode;
 	private AddressType addrType;
+	private String addrZipcode;
 	private String addrBase;
 	private String addrDetail;
 	private String addrDefault;
 	
-
 }

@@ -12,11 +12,10 @@ import lombok.Setter;
 public class UserProfileVO {
 	private Long userNo;
 	private String userName;
+	private Date userBirthday;
 	private String userEmail;
 	private String userGender;
 	private String userNickname;
 	private String userPhone;
-	private Date userCreatedAt;
 	
-
 }
