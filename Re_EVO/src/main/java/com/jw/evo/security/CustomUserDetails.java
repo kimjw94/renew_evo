@@ -1,8 +1,10 @@
 package com.jw.evo.security;
 
 import java.util.Collection;
+import java.util.stream.Collectors;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.jw.evo.vo.security.UserSecurityVO;
@@ -13,56 +15,46 @@ import lombok.RequiredArgsConstructor;
 public class CustomUserDetails implements UserDetails {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private final UserSecurityVO user;
-	
-	
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		
-		
-		
-		
-		return null;
-		
+		return user.getRoleList().stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList());
 	}
 
 	@Override
 	public String getPassword() {
-		// TODO Auto-generated method stub
-		return null;
+		return user.getUserPassword();
 	}
 
 	@Override
 	public String getUsername() {
-		// TODO Auto-generated method stub
-		return null;
+		// springsecurity 는 username 을 loginid 로 인식하지만
+		// db에서는 userLoginId를 로그인아이디 userName을 유저 이름으로 설정했음을 인지 필요
+		return user.getUserLoginId();
 	}
 
 	@Override
 	public boolean isAccountNonExpired() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean isAccountNonLocked() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean isCredentialsNonExpired() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
-		return false;
+		return "Y".equals(user.getUserEnabled());
 	}
-	
-	
-	
+
 }

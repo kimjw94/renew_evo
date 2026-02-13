@@ -26,7 +26,7 @@
 		<intercept-url pattern="/**" access="hasRole('ROLE_USER')" />
 
 		<form-login login-page="/login"
-			login-processing-url="/loginProc" default-target-url="/home"
+			login-processing-url="/loginProc" default-target-url="/"
 			authentication-failure-url="/login?error=true" />
 		<!-- ✅ 세션 관리 (여기!) -->
 		<session-management
