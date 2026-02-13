@@ -25,25 +25,59 @@
 		parameterType="com.jw.evo.vo.user.UserProfileVO">
 		INSERT INTO
 		EVO_USER_PROFILE(USER_NO,USER_NAME,USER_BIRTHDAY,USER_EMAIL,
-			USER_GENDER,USER_NICKNAME,USER_PHONE)
+		USER_GENDER,USER_NICKNAME,USER_PHONE)
 		VALUES(#{userNo},#{userName},#{userBirthday},#{userEmail},
-			#{userGender},#{userNickname},#{userPhone})
+		#{userGender},#{userNickname},#{userPhone})
 	</insert>
 
 	<insert id="insertUserAddress"
 		parameterType="com.jw.evo.vo.user.UserAddressVO">
 		INSERT INTO
 		EVO_USER_ADDRESS(ADDR_NO,USER_NO,ADDR_TYPE,ADDR_ZIPCODE,
-			ADDR_BASE,ADDR_DETAIL,ADDR_DEFAULT)
+		ADDR_BASE,ADDR_DETAIL,ADDR_DEFAULT)
 		VALUES(EVO_USER_ADDRESS_SEQ.NEXTVAL,#{userNo},#{addrType},
-			#{addrZipcode},#{addrBase},#{addrDetail},#{addrDefault})
+		#{addrZipcode},#{addrBase},#{addrDetail},#{addrDefault})
 	</insert>
-	
-	<insert id="insertUserRole" parameterType="com.jw.evo.vo.user.UserRoleVO">
+
+	<insert id="insertUserRole"
+		parameterType="com.jw.evo.vo.user.UserRoleVO">
 		INSERT INTO
 		EVO_USER_ROLE (USER_ROLE_NO,USER_NO,ROLE_NO)
 		VALUES (EVO_USER_ROLE_SEQ.NEXTVAL,#{userNo},#{roleNo})
 	</insert>
+
+	<resultMap type="com.jw.evo.vo.security.UserSecurityVO"
+		id="userSecurityResultMap">
+		<id property="userNo" column="USER_NO" />
+		<result property="userLoginId" column="USER_LOGIN_ID" />
+		<result property="userPassword" column="USER_PASSWORD" />
+		<result property="userEnabled" column="USER_ENABLED" />
+		<result property="userLastLoginAt" column="USER_LAST_LOGIN_AT" />
+		<result property="userName" column="USER_NAME" />
+		<result property="userNickname" column="USER_NICKNAME" />
+
+		<collection property="roleList" ofType="string">
+			<result column="ROLE_NAME" />
+		</collection>
+	</resultMap>
+
+	<select id="selectUserByLoginId" parameterType="string"
+		resultMap="userSecurityResultMap">
+		SELECT
+		A.USER_NO,
+		A.USER_LOGIN_ID,
+		A.USER_PASSWORD,
+		A.USER_ENABLED,
+		A.USER_LAST_LOGIN_AT,
+		P.USER_NAME,
+		P.USER_NICKNAME,
+		R.ROLE_NAME
+		FROM EVO_USER_ACCOUNT A
+		LEFT JOIN EVO_USER_PROFILE P ON A.USER_NO = P.USER_NO
+		LEFT JOIN EVO_USER_ROLE UR ON A.USER_NO = UR.USER_NO
+		LEFT JOIN EVO_ROLE R ON UR.ROLE_NO = R.ROLE_NO
+		WHERE A.USER_LOGIN_ID = #{username}
+	</select>
 
 
 </mapper>
