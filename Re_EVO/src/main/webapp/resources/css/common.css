@@ -1,65 +1,96 @@
-@charset "UTF-8";
-
-/* 기본 리셋 */
-html, body {
-	height: 100%;
-	margin: 0;
+/* 1. 기본 초기화 및 전체 설정 */
+* {
+    box-sizing: border-box; /* 패딩이 너비에 포함되도록 설정 (필수) */
 }
 
-/* 헤더 */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Malgun Gothic', 'Dotum', sans-serif;
+    background-color: #f4f4f4; /* 전체 배경색 (컨테이너 밖) */
+}
+
+/* 링크 기본 스타일 제거 */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* 2. 메인 컨테이너 (핵심) */
+.main_container {
+    /* 너비 설정 */
+    width: 100%;
+    max-width: 1440px; /* 화면이 아무리 커도 1440px까지만 */
+    min-width: 744px; /* 화면이 1024px보다 작아지면 가로 스크롤 발생 (레이아웃 보호) */
+    /* 중앙 정렬 */
+    margin: 0 auto; 
+    /* 배경색 (컨테이너 안) */
+    background-color: #ffffff;
+     /* Sticky Footer 설정을 위한 Flexbox */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* 최소 높이를 화면 전체 높이로 설정 */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* 양옆에 살짝 그림자 */
+}
+
+/* 3. 헤더 영역 */
 .header {
-	background-color: black;
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 50px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 0 10px;
-	box-sizing: border-box;
+    height: 80px; /* 헤더 높이 고정 */
+    display: flex;
+    justify-content: space-between; /* 좌우 끝으로 배치 */
+    align-items: center; /* 세로 중앙 정렬 */
+    padding: 0 20px; /* 좌우 여백 */
+    background-color:black;
+    border-bottom: 1px solid #ddd;
+}
+.header-title {
+    display: flex;            /* 내부 요소를 박스로 취급 */
+    flex-direction: column; 
+    align-items: center;  /* ★핵심: 가로(row)가 아닌 세로(column)로 쌓음 */
+    justify-content: center;  /* 세로 중앙 정렬 */
+    text-decoration: none;    /* 밑줄 제거 */
+    line-height: 1;           /* 줄 간격을 좁힘 */
+           /* (이미지에 맞춰) 글자색 흰색 */
 }
 
-.header-left {
-	display: flex;
-	align-items: center;
+.brand-title {
+	font-family:'musinsaBold';
+    font-size: 35px;         /* 글자 크기 키움 */
+    color: white;             /* 완전 검정 */
 }
-.header-title{
-	color: lightgray;
-	text-decoration:none;
-}
-
-
 
 .header-right {
-	display: flex;
-	align-items: center;
-	
+    font-size: 16px;
 }
 
 .header-login {
-	color: lightgray;
-	text-decoration: none;
-	border: 2px solid lightgray;;
-	padding: 3px 7px;
-	border-radius: 6px;
+    color: white;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: 0.3s;
 }
 
-/* 본문 */
-.content {
-	flex: 1; /* 이게 핵심 */
-	padding: 20px;
+
+/* 4. 본문 영역 */
+.main_contents {
+    flex: 1; /* 남은 공간을 모두 차지함 (푸터를 아래로 밀어냄) */
+    padding: 40px 20px;
 }
 
-/* 푸터 */
+/* 5. 푸터 영역 */
 .footer {
-	background-color: black;
-	color: white;
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	width: 100%;
-	border-top: 1px solid lightgray;
-	position: fixed;
+    height: 100px;
+    background-color: #333;
+    color: #fff;
+    display: flex;       /* flex를 주면 내부 p태그 정렬이 쉬움 */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+}
+
+.footer p {
+    margin-top: 10px;
+    color: #bbb;
 }

@@ -18,25 +18,32 @@
 
 	<!-- HTTP 보안 -->
 	<http auto-config="true" use-expressions="true">
-		<intercept-url pattern="/"  access="permitAll"/>
-		<intercept-url pattern="/signup" access="permitAll"/>
-		<intercept-url pattern="/signupProc" access="permitAll"/>
+		<intercept-url pattern="/" access="permitAll" />
+		<intercept-url pattern="/signup" access="permitAll" />
+		<intercept-url pattern="/signupProc" access="permitAll" />
 		<intercept-url pattern="/login" access="permitAll" />
-		<intercept-url pattern="/resources/**" access="permitAll" />
-		<intercept-url pattern="/**" access="hasRole('ROLE_USER')" />
+		<intercept-url pattern="/resources/**"
+			access="permitAll" />
+		<intercept-url pattern="/**"
+			access="hasRole('ROLE_USER')" />
 
 		<form-login login-page="/login"
 			login-processing-url="/loginProc" default-target-url="/"
 			authentication-failure-url="/login?error=true" />
+			
+		<logout logout-url="/logout" 
+        logout-success-url="/" 
+        invalidate-session="true" 
+        delete-cookies="JSESSIONID, remember-me" />	
 		<!-- ✅ 세션 관리 (여기!) -->
 		<session-management
-			invalid-session-url="/login?invalid=true"
-			session-fixation-protection="migrateSession">
-
-			<concurrency-control max-sessions="1"
-				error-if-maximum-exceeded="false" />
-		</session-management>
-		<logout logout-url="/logout" logout-success-url="/login" />
+              session-fixation-protection="changeSessionId">
+        <concurrency-control 
+            max-sessions="1"
+            error-if-maximum-exceeded="false"
+            expired-url="/login?duplicate=true" />
+    </session-management>
+	
 	</http>
 
 	<!-- 비밀번호 인코더 -->
