@@ -78,6 +78,12 @@
 		LEFT JOIN EVO_ROLE R ON UR.ROLE_NO = R.ROLE_NO
 		WHERE A.USER_LOGIN_ID = #{username}
 	</select>
+	
+	<update id="updateLastLogin" parameterType="string">
+		UPDATE EVO_USER_ACCOUNT
+		SET USER_LAST_LOGIN_AT = SYSDATE
+		WHERE USER_LOGIN_ID = #{loginId}
+	</update>
 
 
 </mapper>

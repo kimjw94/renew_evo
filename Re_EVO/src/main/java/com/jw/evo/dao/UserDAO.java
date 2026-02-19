@@ -37,4 +37,7 @@ public class UserDAO {
 	public int insertUserRole(UserRoleVO userRoleVO) {
 		return userMapper.insertUserRole(userRoleVO);
 	}
+	public int updateLastLogin(String loginId) {
+		return userMapper.updateLastLogin(loginId);
+	}
 }

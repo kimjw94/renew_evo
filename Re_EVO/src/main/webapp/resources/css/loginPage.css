@@ -103,7 +103,10 @@ body a {
 	color: white;
 	background-color: black;
 	border-radius: 6px;
+	cursor:pointer;
 }
+
+
 
 .login-forward-signup {
 	display: flex;

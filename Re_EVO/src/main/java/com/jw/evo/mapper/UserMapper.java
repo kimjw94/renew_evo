@@ -14,4 +14,5 @@ public interface UserMapper {
 	int insertUserAddress(UserAddressVO userAddressVO);
 	int insertUserRole(UserRoleVO userRoleVO);
 	UserSecurityVO selectUserByLoginId(String username);
+	int updateLastLogin(String loginId);
 }
