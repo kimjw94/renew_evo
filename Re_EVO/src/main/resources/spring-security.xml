@@ -24,27 +24,37 @@
 		<intercept-url pattern="/login" access="permitAll" />
 		<intercept-url pattern="/resources/**"
 			access="permitAll" />
-		<intercept-url pattern="/**"
-			access="hasRole('ROLE_USER')" />
+		<intercept-url pattern="/admin/**"
+			access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/**" access="isAuthenticated()" />
+
 
 		<form-login login-page="/login"
-			login-processing-url="/loginProc" default-target-url="/"
+			login-processing-url="/loginProc"
+			authentication-success-handler-ref="customLoginSuccessHandler"
 			authentication-failure-url="/login?error=true" />
-			
-		<logout logout-url="/logout" 
-        logout-success-url="/" 
-        invalidate-session="true" 
-        delete-cookies="JSESSIONID, remember-me" />	
+
+		<logout logout-url="/logout" logout-success-url="/"
+			invalidate-session="true" delete-cookies="JSESSIONID, remember-me" />
 		<!-- ✅ 세션 관리 (여기!) -->
 		<session-management
-              session-fixation-protection="changeSessionId">
-        <concurrency-control 
-            max-sessions="1"
-            error-if-maximum-exceeded="false"
-            expired-url="/login?duplicate=true" />
-    </session-management>
-	
+			session-fixation-protection="changeSessionId">
+			<concurrency-control max-sessions="1"
+				error-if-maximum-exceeded="false"
+				expired-url="/login?duplicate=true" />
+		</session-management>
+
 	</http>
+
+
+	<!-- CustomLoginSuccessHandler Bean 등록 -->
+	<beans:bean id="customLoginSuccessHandler"
+		class="com.jw.evo.security.CustomLoginSuccessHandler">
+		<beans:constructor-arg ref="userService" />
+		<beans:property name="defaultTargetUrl" value="/" />
+	</beans:bean>
+
+
 
 	<!-- 비밀번호 인코더 -->
 	<beans:bean id="passwordEncoder"

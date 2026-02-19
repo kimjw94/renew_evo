@@ -24,6 +24,8 @@ public class UserService {
 	private final UserDAO userDAO;
 	private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
+	
+	//회원가입
 	@Transactional
 	public void signupProc(UserSignupDTO userSignupDTO) {
 		// 시퀀스로 User_no 생성
@@ -94,8 +96,12 @@ public class UserService {
 		userDAO.insertUserRole(userRole);
 
 	}
-	
-	//
+	//회원가입
+	@Transactional
+	public void updateLastLogin(String loginId) {
+		userDAO.updateLastLogin(loginId);
+		
+	}
 
 
 }
