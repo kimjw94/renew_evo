@@ -18,6 +18,10 @@ public class CustomUserDetails implements UserDetails {
 
 	private final UserSecurityVO user;
 
+	public Long getUserNo() {
+	    return user.getUserNo();
+	}
+	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		

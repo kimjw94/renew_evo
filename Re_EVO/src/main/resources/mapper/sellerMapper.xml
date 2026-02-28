@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jw.evo.mapper.SellerMapper">
+	<insert id="insertSellerRequest"
+		parameterType="com.jw.evo.vo.seller.SellerRequestVO">
+		INSERT INTO EVO_SELLER_REQUEST (
+		SELLER_REQ_NO, USER_NO, BUSINESS_NAME, BUSINESS_LOGO, BUSINESS_OWNER,
+		BUSINESS_NUMBER, BUSINESS_TEL, BUSINESS_EMAIL, BUSINESS_ZIPCODE,
+		BUSINESS_ADDRESS, BUSINESS_ADDRESS_DETAIL,REQUEST_STATUS, REQUEST_DATE
+		) VALUES (
+		SELLER_REQ_SEQ.NEXTVAL, #{userNo},
+		#{businessName},
+		#{businessLogo},
+		#{businessOwner},
+		#{businessNumber},
+		#{businessTel},
+		#{businessEmail},
+		#{businessZipcode},
+		#{businessAddress},
+		#{businessAddressDetail},
+		#{requestStatus},
+		SYSDATE )
+
+	</insert>
+
+</mapper>
