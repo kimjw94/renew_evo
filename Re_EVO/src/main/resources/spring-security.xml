@@ -26,6 +26,8 @@
 			access="permitAll" />
 		<intercept-url pattern="/admin/**"
 			access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/seller/request" access="isAuthenticated()"/>
+		<intercept-url pattern="/seller/requestProc" access = "isAuthenticated()"/>
 		<intercept-url pattern="/**" access="isAuthenticated()" />
 
 
