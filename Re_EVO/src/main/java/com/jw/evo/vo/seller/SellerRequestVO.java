@@ -25,6 +25,7 @@ public class SellerRequestVO {
 	private String businessAddressDetail;
 
 	private String requestStatus;
+	private String statusName;
 	private Date requestDate;
 	
 	private Date processedDate;

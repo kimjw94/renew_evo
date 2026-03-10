@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	admin 페이지 추가 필요
-	<a href="<c:url value='/'/>">메인페이지</a> 
+	공지사항
+	여기에 아무거나 나와야하는 거잖아
 </body>
 </html>
