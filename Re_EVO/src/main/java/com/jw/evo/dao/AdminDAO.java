@@ -30,6 +30,13 @@ public class AdminDAO {
 		 return adminMapper.countSellerRequestByStatus(status);
 	 }
 	
+	public int updateSellerApprove(Long sellerReqNo) {
+		return adminMapper.updateSellerApprove(sellerReqNo);
+	}
 	
+	public int updateSellerReject(Long sellerReqNo, String rejectReason) {
+		return adminMapper.updateSellerReject(sellerReqNo,rejectReason);
+	}
+		
 
 }

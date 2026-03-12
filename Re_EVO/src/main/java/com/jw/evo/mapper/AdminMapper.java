@@ -9,9 +9,16 @@ import com.jw.evo.vo.seller.SellerRequestVO;
 
 @Mapper
 public interface AdminMapper {
-	List<SellerRequestVO> getSellerRequestListAll(@Param("start")int start,@Param("end")int end);
-	List<SellerRequestVO> getSellerRequestListByStatus(@Param("status")String status,@Param("start")int start,@Param("end")int end);
-	int countSellerRequestAll();
-	int countSellerRequestByStatus(@Param("status")String status);
+	List<SellerRequestVO> getSellerRequestListAll(@Param("start") int start, @Param("end") int end);
 
+	List<SellerRequestVO> getSellerRequestListByStatus(@Param("status") String status, @Param("start") int start,
+			@Param("end") int end);
+
+	int countSellerRequestAll();
+
+	int countSellerRequestByStatus(@Param("status") String status);
+
+	int updateSellerApprove(@Param("sellerReqNo") Long sellerReqNo);
+
+	int updateSellerReject(@Param("sellerReqNo") Long sellerReqNo, @Param("rejectReason") String rejectReason);
 }

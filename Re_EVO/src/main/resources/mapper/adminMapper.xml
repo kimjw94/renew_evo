@@ -12,10 +12,12 @@
 		'Approved', '승인완료',
 		'Rejected', '승인거절',
 		REQUEST_STATUS) AS statusName
-		FROM EVO_SELLER_REQUEST E
+		FROM
+		EVO_SELLER_REQUEST E
 		ORDER BY request_date DESC
 		) a
-		WHERE ROWNUM &lt;= #{end}
+		WHERE ROWNUM &lt;=
+		#{end}
 		)
 		WHERE rn &gt;= #{start}
 	</select>
@@ -29,15 +31,18 @@
 		E.*,
 		CASE
 		WHEN REQUEST_STATUS = 'Request' THEN '승인요청'
-		WHEN REQUEST_STATUS = 'Approved' THEN '승인완료'
+		WHEN REQUEST_STATUS =
+		'Approved' THEN '승인완료'
 		WHEN REQUEST_STATUS = 'Rejected' THEN '승인거절'
 		ELSE REQUEST_STATUS
 		END AS statusName
 		FROM EVO_SELLER_REQUEST E
-		WHERE REQUEST_STATUS = #{status}
+		WHERE
+		REQUEST_STATUS = #{status}
 		ORDER BY request_date DESC
 		) a
-		WHERE ROWNUM &lt;= #{end}
+		WHERE ROWNUM
+		&lt;= #{end}
 		)
 		WHERE rn &gt;= #{start}
 	</select>
@@ -51,4 +56,21 @@
 		COUNT(*) FROM EVO_SELLER_REQUEST
 		WHERE REQUEST_STATUS = #{status}
 	</select>
+	<update id="updateSellerApprove">
+		UPDATE EVO_SELLER_REQUEST
+		SET REQUEST_STATUS = 'Approved',
+		PROCESSED_DATE = SYSDATE
+		WHERE SELLER_REQ_NO = #{sellerReqNo}
+		AND REQUEST_STATUS = 'Request'
+	</update>
+	
+	<update id="updateSellerReject">
+		UPDATE EVO_SELLER_REQUEST
+		SET REQUEST_STATUS ='Rejected',
+		PROCESSED_DATE = SYSDATE,
+		REJECT_REASON = #{rejectReason}
+		WHERE SELLER_REQ_NO = #{sellerReqNo}
+		AND REQUEST_STATUS = 'Request'
+	</update>
+
 </mapper>

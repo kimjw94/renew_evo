@@ -41,4 +41,19 @@ public class AdminService {
 
 	}
 
+	@Transactional
+	public boolean approveSeller(Long sellerReqNo) {
+		int result = adminDAO.updateSellerApprove(sellerReqNo);
+		if (result > 0) {
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+	
+	@Transactional
+	public int rejectSeller(Long sellerReqNo,String rejectReason) {
+		return adminDAO.updateSellerReject(sellerReqNo,rejectReason);
+	}
 }
