@@ -6,6 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<script src="<c:url value='/resources/js/jQuery.js'/>"></script>
+<script src="<c:url value='/resources/js/sellerRequestChk.js'/>"></script>
 </head>
 <body>
 <h2>판매자 등록 요청 관리</h2>
@@ -62,8 +65,8 @@
 
 <c:if test="${req.requestStatus eq 'Request'}">
 
-<button>승인</button>
-<button>거절</button>
+<button onclick="approveSeller(${req.sellerReqNo})">승인</button>
+<button onclick="rejectSeller(${req.sellerReqNo})">거절</button>
 
 </c:if>
 
@@ -107,6 +110,20 @@ ${num}
 다음
 </a>
 </c:if>
+
+</div>
+
+
+
+<div id="rejectModal" style="display:none">
+
+ <h3>거절 사유 입력</h3>
+
+    <textarea id="rejectReason"></textarea>
+
+    <button onclick="submitReject()">확인</button>
+    <button onclick="closeSellerRejectModal()">취소</button>
+
 
 </div>
 

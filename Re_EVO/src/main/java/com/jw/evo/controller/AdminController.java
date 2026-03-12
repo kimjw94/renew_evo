@@ -5,10 +5,14 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jw.evo.dto.PageDTO;
+import com.jw.evo.dto.RejectRequestDTO;
 import com.jw.evo.service.AdminService;
 import com.jw.evo.vo.seller.SellerRequestVO;
 
@@ -35,7 +39,6 @@ public class AdminController {
 
 		// 2. 페이징 처리된 목록 조회
 		List<SellerRequestVO> requestList = adminService.getSellerRequestList(status, page, amount);
-        
 
 		// 3. PageDTO 생성
 		PageDTO pageDTO = new PageDTO(page, amount, total);
@@ -47,6 +50,20 @@ public class AdminController {
 
 		return "admin/adminIndex";
 
+	}
+
+	@PostMapping("/approveSeller")
+	@ResponseBody
+	public String approveSeller(@RequestParam Long sellerReqNo) {
+		boolean result = adminService.approveSeller(sellerReqNo);
+	    return result ? "success" : "error";
+	}
+	
+	@PostMapping("/rejectSeller")
+	@ResponseBody
+	public String rejectSeller(@RequestBody RejectRequestDTO rejectRequestDTO) {
+		adminService.rejectSeller(rejectRequestDTO.getSellerReqNo(), rejectRequestDTO.getRejectReason());
+		return "success";
 	}
 
 }
